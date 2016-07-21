@@ -1,0 +1,16 @@
+﻿<ion-view>
+    <ion-content>
+        <ion-list>
+            <ion-item href="{{msg.url}}" class="item-text-wrap item-thumbnail-right font-family" ng-repeat="msg in news">
+                <img ng-src="{{msg.imgUrl}}" />
+                <h2 class="font-family">{{msg.title}}</h2>
+                <p class="margin-top">
+                    <span class="assertive assertive-border">{{msg.hot_label}}</span>
+                    <span>{{msg.src}}</span>
+                    <span>{{msg.cmt}}</span>
+                    <span>{{msg.time}}</span>
+                </p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

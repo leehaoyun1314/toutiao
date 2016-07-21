@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+    <link href="ionic-library/css/ionic.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="../../Scripts/zepto.min.js"></script>
+</head>
+
+<body ng-app="starter">
+    <ion-header-bar align-title="center" class="bar bar-assertive">
+        <div class="buttons"><a class="button button-clear icon ion-ios-email-outline"></a></div>
+        <h1 class="title"><b>今日头条</b><i class="icon ion-load-c"></i></h1>
+        <div class="buttons"><a class="button button-clear icon ion-ios-search"></a></div>
+    </ion-header-bar>
+    <ion-header-bar class="bar bar-subheader bar-stable">
+        <div class="title">
+            <ion-scroll direction="x">
+                <div class="buttons margin-top font-family">
+                    <a class="button button-clear" ui-sref="home">推荐</a>
+                    <a class="button button-clear" ui-sref="video">视频</a>
+                    <a class="button button-clear" ui-sref="hotspot">热点</a>
+                    <a class="button button-clear" ui-sref="social">社会</a>
+                    <a class="button button-clear" ui-sref="entertain">娱乐</a>
+                    <a class="button button-clear" ui-sref="military">军事</a>
+                    <a class="button button-clear" ui-sref="science">科技</a>
+                    <a class="button button-clear" ui-sref="car">汽车</a>
+                </div>
+            </ion-scroll>
+        </div>
+        <a class="button button-clear">
+            <i class="icon assertive ion-plus-round"></i>
+        </a>
+    </ion-header-bar>
+    <ion-nav-view></ion-nav-view>
+    <script src="ionic-library/js/ionic.bundle.min.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+G:\dotNot就业班\课下练习\TouTiao\TouTiao\bin\ApplicationInsights.config
+G:\dotNot就业班\课下练习\TouTiao\TouTiao\bin\TouTiao.dll.config
+G:\dotNot就业班\课下练习\TouTiao\TouTiao\bin\TouTiao.dll
+G:\dotNot就业班\课下练习\TouTiao\TouTiao\bin\TouTiao.pdb
+G:\dotNot就业班\课下练习\TouTiao\TouTiao\obj\Debug\TouTiao.csprojResolveAssemblyReference.cache
+G:\dotNot就业班\课下练习\TouTiao\TouTiao\obj\Debug\TouTiao.dll
+G:\dotNot就业班\课下练习\TouTiao\TouTiao\obj\Debug\TouTiao.pdb
