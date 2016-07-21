@@ -5,3 +5,10 @@ G:\dotNot就业班\课下练习\TouTiao\TouTiao\bin\TouTiao.pdb
 G:\dotNot就业班\课下练习\TouTiao\TouTiao\obj\Debug\TouTiao.csprojResolveAssemblyReference.cache
 G:\dotNot就业班\课下练习\TouTiao\TouTiao\obj\Debug\TouTiao.dll
 G:\dotNot就业班\课下练习\TouTiao\TouTiao\obj\Debug\TouTiao.pdb
+F:\toutiao\TouTiao\bin\ApplicationInsights.config
+F:\toutiao\TouTiao\bin\TouTiao.dll.config
+F:\toutiao\TouTiao\bin\TouTiao.dll
+F:\toutiao\TouTiao\bin\TouTiao.pdb
+F:\toutiao\TouTiao\obj\Debug\TouTiao.csprojResolveAssemblyReference.cache
+F:\toutiao\TouTiao\obj\Debug\TouTiao.dll
+F:\toutiao\TouTiao\obj\Debug\TouTiao.pdb

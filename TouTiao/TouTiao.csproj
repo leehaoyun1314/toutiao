@@ -101,6 +101,7 @@
     <Content Include="toutiao\www\js\app.js" />
     <Content Include="toutiao\www\js\controllers.js" />
     <Content Include="toutiao\www\js\services.js" />
+    <Content Include="toutiao\www\templates\detail.html" />
     <Content Include="toutiao\www\templates\home.html" />
     <Content Include="toutiao\www\templates\video.html" />
     <Content Include="Web.config" />

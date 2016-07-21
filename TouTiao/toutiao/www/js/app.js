@@ -27,16 +27,26 @@
         //$ionicConfigProvider.platform.ios.views.transition('ios');
         $ionicConfigProvider.platform.android.views.transition('android');
     }])
-    .config(['$stateProvider', function ($stateProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $stateProvider.state('home', {
-                cache: false,
-                url: '/home',
-                templateUrl: 'templates/home.html',
-                controller: 'HomeCtrl'
-            }).state('video', {
-                cache: false,
-                url: '/video',
-                templateUrl: 'templates/video.html',
-                controller: 'VideoCtrl'
-            });
+            cache: false,
+            url: '/home',
+            templateUrl: 'templates/home.html',
+            controller: 'HomeCtrl'
+        }).state('video', {
+            cache: false,
+            url: '/video',
+            templateUrl: 'templates/video.html',
+            controller: 'VideoCtrl'
+        }).state('detail', {
+            cache: false,
+            url: '/detail',
+            templateurl: 'templates/detail.html',
+            controller: 'DetailCtrl'/*,
+            params: {
+                url: null
+            }*/
+        });
+
+        $urlRouterProvider.otherwise('/home');
     }]);
