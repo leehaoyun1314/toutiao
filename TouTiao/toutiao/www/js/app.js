@@ -40,12 +40,9 @@
             controller: 'VideoCtrl'
         }).state('detail', {
             cache: false,
-            url: '/detail',
-            templateurl: 'templates/detail.html',
-            controller: 'DetailCtrl'/*,
-            params: {
-                url: null
-            }*/
+            url: '/detail/:url',
+            templateUrl: 'templates/detail.html',
+            controller: 'DetailCtrl'
         });
 
         $urlRouterProvider.otherwise('/home');
