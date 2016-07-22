@@ -11,6 +11,7 @@
             url: function(visitUrl) {
                 var that = this;
                 http.get(visitUrl, function(res) {
+                    console.log(visitUrl);
                     var resData = '';
                     res.on('data', function(data) {
                         resData += data; //拼接响应报文
@@ -25,7 +26,7 @@
                         } else {
                             var headers = res.rawHeaders;
                             var redirecUrl = headers[11] || '';
-                            if (redirecUrl.indexOf('http') == 0) {
+                            if (/^http:.*/.test(redirecUrl) || /^https:.*/.test(redirecUrl)) {
                                 that.url(redirecUrl);
                                 return;
                             } else {
@@ -44,7 +45,9 @@
                 $('a[href^="/"]').each(function(index, item) {
                     var href = $(item).attr('href');
                     if (href.indexOf('/item/') >= 0) {
-                        href = 'i' + href.replace('/item/', '').replace('/', '');
+                        href = 'i' + href.replace('/item/', '').replace(/[/]/g, '');
+                    } else {
+                        href = href.replace(/[/]/g, '');
                     }
                     var title = $('.desc>h3', item).text();
                     var itemInfo = $('.desc .item_info', item);
@@ -70,9 +73,10 @@
                 // 赋值就触发回调
                 that.postList(postList);
             },
-            detailHtml: function(text) {
+            detailHtml: function(resHtml) {
                 var that = this;
-                var $ = cheerio.load(text);
+                console.log(resHtml);
+                var $ = cheerio.load(resHtml);
                 var postList = [];
                 var header = $('header');
                 var title = $('h1', header).text();
@@ -108,6 +112,9 @@
             visitObject.visitUrl = 'http://m.toutiao.com/list' + request.url;
         } else {
             visitObject.visitUrl += request.url;
+        }
+        if (visitObject.visitUrl.substring(visitObject.visitUrl.length - 1) !== '/') {
+            visitObject.visitUrl += '/';
         }
         var query = url.parse(visitObject.visitUrl).query;
         visitObject.tag = qs.parse(query).tag || '';

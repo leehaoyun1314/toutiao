@@ -8,7 +8,7 @@
                     <span>{{msg.time}}</span>
                 </p>
                 <p><img ng-src="{{msg.imgUrl}}" /></p>
-                <div>{{msg.src}}</div>
+                <div ng-bind-html="msg.src"></div>
             </ion-item>
         </ion-list>
     </ion-content>
