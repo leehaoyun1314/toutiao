@@ -1,4 +1,4 @@
-﻿angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+﻿angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngSanitize'])
     .run(['$ionicPlatform', function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard for form inputs)
@@ -33,16 +33,16 @@
             url: '/home',
             templateUrl: 'templates/home.html',
             controller: 'HomeCtrl'
+        }).state('detail', {
+            cache: false,
+            url: '/home/:url',
+            templateUrl: 'templates/detail.html',
+            controller: 'DetailCtrl'
         }).state('video', {
             cache: false,
             url: '/video',
             templateUrl: 'templates/video.html',
             controller: 'VideoCtrl'
-        }).state('detail', {
-            cache: false,
-            url: '/detail/:url',
-            templateUrl: 'templates/detail.html',
-            controller: 'DetailCtrl'
         });
 
         $urlRouterProvider.otherwise('/home');

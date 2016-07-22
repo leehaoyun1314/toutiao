@@ -5,13 +5,15 @@
         });
     }]).controller('VideoCtrl', ['$scope', function ($scope) {
         $scope.content = 'Hello, Video !';
-    }]).controller('DetailCtrl', ['$scope', '$stateParams', '$http', function ($scope, $stateParams, $http) {
+    }]).controller('DetailCtrl', ['$scope', '$stateParams', '$http', '$sce', function ($scope, $stateParams, $http, $sce) {
         var itemUrl = $stateParams.url;
-        console.log(itemUrl);
         if (itemUrl.substring(0, 1) == 'i') {
             itemUrl = 'item/' + itemUrl.substring(1) + '/';
         }
         $http.get('http://localhost:8888/' + itemUrl).success(function (data, status, header, config) {
+            for (var index = 0; index < data.length; index++) {
+                data[index].src = $sce.trustAsHtml(data[index].src);
+            }
             $scope.news = data;
         });
     }]);

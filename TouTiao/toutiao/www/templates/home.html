@@ -1,7 +1,7 @@
 ﻿<ion-view>
     <ion-content>
         <ion-list>
-            <ion-item class="item-text-wrap item-thumbnail-right font-family" ng-repeat="msg in news" href="#/detail/{{msg.url}}">
+            <ion-item class="item-text-wrap item-thumbnail-right font-family" ng-repeat="msg in news" href="#/home/{{msg.url}}">
                 <img ng-src="{{msg.imgUrl}}" />
                 <h2 class="font-family">{{msg.title}}</h2>
                 <p class="margin-top">
@@ -14,3 +14,4 @@
         </ion-list>
     </ion-content>
 </ion-view>
+<!--href="#/detail/{{msg.url}}"-->
