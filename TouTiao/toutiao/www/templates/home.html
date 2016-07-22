@@ -1,7 +1,7 @@
 ﻿<ion-view>
     <ion-content>
-        <ion-list ng-if="news">
-            <ion-item ui-serf="detail({url:'{{msg.url}}}')" class="item-text-wrap item-thumbnail-right font-family" ng-repeat="msg in news">
+        <ion-list>
+            <ion-item class="item-text-wrap item-thumbnail-right font-family" ng-repeat="msg in news" href="#/detail/{{msg.url}}">
                 <img ng-src="{{msg.imgUrl}}" />
                 <h2 class="font-family">{{msg.title}}</h2>
                 <p class="margin-top">
@@ -12,7 +12,5 @@
                 </p>
             </ion-item>
         </ion-list>
-        {{news.html}}
     </ion-content>
 </ion-view>
-<!--ui-serf="detail({url:'{{msg.url}}}')"-->
