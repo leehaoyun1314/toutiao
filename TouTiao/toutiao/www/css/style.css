@@ -24,8 +24,13 @@ p img {
     width: 100%;
 }
 
+p {
+    text-indent: 16px;
+}
+
 .item h2 {
     margin: 15px 0 2px 0;
     font-size: 17px;
     font-weight: 400;
+    text-align: center;
 }
