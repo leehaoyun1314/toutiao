@@ -1,22 +1,22 @@
-(function () {
+(function() {
     // 定义变量
     var cheerio = require('cheerio');
     var qs = require('querystring');
     var http = require('http');
     var url = require('url');
 
-    http.createServer(function (request, response) {
+    http.createServer(function(request, response) {
         var visitObject = {
             // 根据 url，获取 html
-            url: function (visitUrl) {
+            url: function(visitUrl) {
                 var that = this;
-                http.get(visitUrl, function (res) {
+                http.get(visitUrl, function(res) {
                     console.log(visitUrl);
                     var resData = '';
-                    res.on('data', function (data) {
+                    res.on('data', function(data) {
                         resData += data; //拼接响应报文
                     });
-                    res.on('end', function () {
+                    res.on('end', function() {
                         // 响应结束
                         if (that.tag == '__all__') {
                             var obj = JSON.parse(resData);
@@ -37,13 +37,13 @@
                 });
             },
             // 解析返回的 json 字符串中的 HTML
-            jsonHtml: function (resHtml) {
+            jsonHtml: function(resHtml) {
                 var that = this;
                 // cheerio的load方法返回的对象，拥有与jQuery相似的API
                 var $ = cheerio.load(resHtml);
                 var postList = [];
                 // 查询符合条件的a标签
-                $('a[href^="/"]').each(function (index, item) {
+                $('a[href^="/"]').each(function(index, item) {
                     var href = $(item).attr('href');
                     if (href.indexOf('/item/') >= 0) {
                         href = 'i' + href.replace('/item/', '').replace(/[/]/g, '');
@@ -75,7 +75,7 @@
                 that.responseList(postList);
             },
             // 解析返回的详情页的 HTML
-            detailHtml: function (resHtml) {
+            detailHtml: function(resHtml) {
                 var that = this;
                 var $ = cheerio.load(resHtml);
                 var postList = [];
@@ -96,12 +96,12 @@
                 that.responseList(postList);
             },
             // 返回响应报文
-            responseList: function (resList) {
+            responseList: function(resList) {
                 response.writeHead(200, { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' });
                 response.end(JSON.stringify(resList));
             },
             // 解析第一种情况的 HTML
-            parseOne: function ($) {
+            parseOne: function($) {
                 console.log('第一种方式');
                 var postList = [];
                 var header = $('body header');
@@ -112,7 +112,7 @@
                 var content = $('article');
                 var imgUrl = $('img', content).attr('alt_src');
                 var src = '';
-                $('p:not(:first-child)', content).each(function (index, item) {
+                $('p:not(:first-child)', content).each(function(index, item) {
                     src += '<p>' + $(item).text() + '</p>';
                 });
                 postList.push({
@@ -126,11 +126,11 @@
                 return postList;
             },
             // 解析第二种情况的 HTML
-            parseTwo: function ($) {
+            parseTwo: function($) {
 
             },
             // 解析第三种情况的 HTML
-            parseThree: function ($) {
+            parseThree: function($) {
                 console.log('第三种方式');
                 var article = $('body>div#wrapper>div#container>div>div#pagelet-article');
                 var header = $('div.article-header', article);
@@ -140,7 +140,7 @@
                 var content = $('div.article-content', article);
                 var imgUrl = $('img', content).attr('src');
                 var src = '';
-                $('p', content).each(function (index, item) {
+                $('p', content).each(function(index, item) {
                     src += '<p>' + $(item).text() + '</p>';
                 });
                 var postList = [];
@@ -154,7 +154,7 @@
                 return postList;
             },
             // 解析第四种情况的 HTML
-            parseFour: function ($) {
+            parseFour: function($) {
                 console.log('第四种方式');
                 var postList = [];
                 var header = $('body>div#gallery>header');
@@ -178,20 +178,25 @@
                 //    var src = $('figcaption', item).text();
                 //    var imgUrl = $('img', item).text();
                 //});
+            },
+            // 转换 URL 地址
+            parseUrl: function(currentUrl) {
+                var that = this;
+                that.visitUrl = currentUrl;
+                if (request.url == '/favicon.ico') {
+                    response.end();
+                } else if (request.url.indexOf('tag=') >= 0) {
+                    that.visitUrl = 'http://m.toutiao.com/list' + request.url;
+                } else {
+                    that.visitUrl += request.url;
+                }
+                if (that.visitUrl.substring(that.visitUrl.length - 1) !== '/') {
+                    that.visitUrl += '/';
+                }
             }
         };
 
-        visitObject.visitUrl = 'http://m.toutiao.com';
-        if (request.url == '/favicon.ico') {
-            response.end();
-        } else if (request.url.indexOf('tag=') >= 0) {
-            visitObject.visitUrl = 'http://m.toutiao.com/list' + request.url;
-        } else {
-            visitObject.visitUrl += request.url;
-        }
-        if (visitObject.visitUrl.substring(visitObject.visitUrl.length - 1) !== '/') {
-            visitObject.visitUrl += '/';
-        }
+        visitObject.parseUrl('http://m.toutiao.com');
         var query = url.parse(visitObject.visitUrl).query;
         visitObject.tag = qs.parse(query).tag || '';
         visitObject.url(visitObject.visitUrl);
