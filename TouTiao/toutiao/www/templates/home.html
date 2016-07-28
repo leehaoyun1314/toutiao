@@ -1,9 +1,33 @@
 ﻿<ion-view>
-    <ion-content>
+    <ion-header-bar align-title="center" class="bar bar-assertive">
+        <div class="buttons"><a class="button button-clear icon ion-ios-email-outline"></a></div>
+        <h1 class="title"><b>今日头条</b><i class="icon ion-load-c"></i></h1>
+        <div class="buttons"><a class="button button-clear icon ion-ios-search"></a></div>
+    </ion-header-bar>
+    <ion-header-bar class="bar bar-subheader bar-stable">
+        <div class="title">
+            <ion-scroll direction="x">
+                <div class="buttons margin-top font-family">
+                    <a class="button button-clear" ui-sref="home">推荐</a>
+                    <a class="button button-clear" ui-sref="video">视频</a>
+                    <a class="button button-clear" ui-sref="hotspot">热点</a>
+                    <a class="button button-clear" ui-sref="social">社会</a>
+                    <a class="button button-clear" ui-sref="entertain">娱乐</a>
+                    <a class="button button-clear" ui-sref="military">军事</a>
+                    <a class="button button-clear" ui-sref="science">科技</a>
+                    <a class="button button-clear" ui-sref="car">汽车</a>
+                </div>
+            </ion-scroll>
+        </div>
+        <a class="button button-clear">
+            <i class="icon assertive ion-plus-round"></i>
+        </a>
+    </ion-header-bar>
+    <ion-content class="has-header has-subheader">
         <ion-list>
             <ion-item class="item-text-wrap item-thumbnail-right font-family" ng-repeat="msg in news" href="#/home/{{msg.url}}">
                 <img ng-src="{{msg.imgUrl}}" />
-                <h2 class="font-family">{{msg.title}}</h2>
+                <h2>{{msg.title}}</h2>
                 <p class="margin-top">
                     <span class="assertive assertive-border">{{msg.hot_label}}</span>
                     <span>{{msg.src}}</span>

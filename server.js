@@ -111,10 +111,9 @@
 
                 var content = $('article');
                 var imgUrl = $('img', content).attr('alt_src');
-                var src = '';
-                $('p:not(:first-child)', content).each(function(index, item) {
-                    src += '<p>' + $(item).text() + '</p>';
-                });
+                var src = $('article').html();
+                src = src.replace(/&#x/g, '%u').replace(/;/g, '');
+                src = unescape(src);
                 postList.push({
                     url: '',
                     imgUrl: imgUrl,
@@ -139,10 +138,9 @@
                 var time = $('div>.time', header).text();
                 var content = $('div.article-content', article);
                 var imgUrl = $('img', content).attr('src');
-                var src = '';
-                $('p', content).each(function(index, item) {
-                    src += '<p>' + $(item).text() + '</p>';
-                });
+                var src = $('div.article-content', article).html();
+                src = src.replace(/&#x/g, '%u').replace(/;/g, '');
+                src = unescape(src);
                 var postList = [];
                 postList.push({
                     title: title,

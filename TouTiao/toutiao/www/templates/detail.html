@@ -2,12 +2,11 @@
     <ion-content>
         <ion-list>
             <ion-item class="item-text-wrap font-family" ng-repeat="msg in news">
-                <h2 class="font-family">{{msg.title}}</h2>
+                <h2 class="title">{{msg.title}}</h2>
                 <p class="margin-top">
                     <span>{{msg.cmt}}</span>
                     <span>{{msg.time}}</span>
                 </p>
-                <p><img ng-src="{{msg.imgUrl}}" /></p>
                 <div ng-bind-html="msg.src"></div>
             </ion-item>
         </ion-list>

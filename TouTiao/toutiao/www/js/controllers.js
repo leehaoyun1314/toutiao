@@ -11,7 +11,7 @@
             itemUrl = 'item/' + itemUrl.substring(1);
         }
         $http.get('http://localhost:8888/' + itemUrl).success(function (data, status, header, config) {
-            for (var index = 0; index < data.length; index++) {
+            for (var index = 0, length = data.length; index < length; index++) {
                 data[index].src = $sce.trustAsHtml(data[index].src);
             }
             $scope.news = data;
