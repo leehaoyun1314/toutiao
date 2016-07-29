@@ -110,13 +110,13 @@
                 var cmt = $('#source', header).text();
 
                 var content = $('article');
-                var imgUrl = $('img', content).attr('alt_src');
+                // var imgUrl = $('img', content).attr('alt_src');
                 var src = $('article').html();
                 src = src.replace(/&#x/g, '%u').replace(/;/g, '');
                 src = unescape(src);
                 postList.push({
                     url: '',
-                    imgUrl: imgUrl,
+                    // imgUrl: imgUrl,
                     title: title,
                     src: src,
                     cmt: cmt,
@@ -137,7 +137,7 @@
                 var cmt = $('div>.src', header).text();
                 var time = $('div>.time', header).text();
                 var content = $('div.article-content', article);
-                var imgUrl = $('img', content).attr('src');
+                // var imgUrl = $('img', content).attr('src');
                 var src = $('div.article-content', article).html();
                 src = src.replace(/&#x/g, '%u').replace(/;/g, '');
                 src = unescape(src);
@@ -146,7 +146,7 @@
                     title: title,
                     cmt: cmt,
                     src: src,
-                    imgUrl: imgUrl,
+                    // imgUrl: imgUrl,
                     time: time
                 });
                 return postList;
@@ -161,21 +161,24 @@
                 var time = $('div.subtitle>time', header).text();
 
                 var content = $('body>div#gallery>figure');
+
                 var src = $('figcaption', content).text();
-                var imgUrl = $('img', content).text();
+                // var imgUrl = $('img', content).text();
+                $('figure').each(function(index, item) {
+                    var imgUrl = $('img', item).text();
+                    src += '<img ng-src="' + imgUrl + '" />';
+                    var captionText = $('figcaption', item).text();
+                    src += '<p><span>' + captionText + '</span></p>';
+                });
 
                 postList.push({
                     title: title,
                     cmt: cmt,
                     time: time,
-                    imgUrl: imgUrl,
+                    // imgUrl: imgUrl,
                     src: src
                 });
                 return postList;
-                //$('figure').each(function (index, item) {
-                //    var src = $('figcaption', item).text();
-                //    var imgUrl = $('img', item).text();
-                //});
             },
             // 转换 URL 地址
             parseUrl: function(currentUrl) {
