@@ -25,7 +25,7 @@
     </ion-header-bar>
     <ion-content class="has-header has-subheader">
         <ion-list>
-            <ion-item class="item-text-wrap item-thumbnail-right font-family" ng-repeat="msg in news" href="#/home/{{msg.url}}">
+            <ion-item class="item-text-wrap item-thumbnail-right font-family" collection-repeat="msg in news" href="#/home/{{msg.url}}">
                 <img ng-src="{{msg.imgUrl}}" />
                 <h2>{{msg.title}}</h2>
                 <p class="margin-top">
