@@ -77,6 +77,7 @@
             // 解析返回的详情页的 HTML
             detailHtml: function(resHtml) {
                 var that = this;
+                console.log(resHtml);
                 var $ = cheerio.load(resHtml);
                 var postList = [];
                 if ($('body header').length > 0) {
